@@ -19,5 +19,11 @@ pipeline {
             }
         }
 
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t cloudcart/product-service:${BUILD_NUMBER} .'
+            }
+        }
+
     }
 }
