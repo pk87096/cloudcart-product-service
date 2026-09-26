@@ -2,8 +2,10 @@ FROM jenkins/jenkins:lts-jdk21
 
 USER root
 
-RUN apt-get update \
-    && apt-get install -y docker.io \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y docker.io kubectl curl
+
+RUN curl -L -o /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/v0.32.0/kind-linux-arm64
+
+RUN chmod +x /usr/local/bin/kind
 
 USER jenkins
